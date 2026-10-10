@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="NUUX is a software studio in Tallinn, Estonia, building TIRA, IO Examiner and In My Spheres.">
+<meta property="og:title" content="NUUX">
+<meta property="og:description" content="Software made with unusual care. TIRA, IO Examiner and In My Spheres, built in Tallinn.">
+<meta property="og:url" content="https://nuux.si/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://nuux.si/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+html,body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>NUUX</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230b0c10'/%3E%3Cpath d='M5.4 16.4V11a3.3 3.3 0 0 1 6.6 0v2' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M12 13a3.3 3.3 0 0 0 6.6 0V7.6' fill='none' stroke='%232fa69b' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+/* Layout: a studio site in chapters. A hero "stage" cycles the three products; each product then gets a full-width chapter with a hands-on demo of the real thing. One dark chapter (TIRA) breaks the white rhythm. */
+:root{
+  --bg:#ffffff; --bg-soft:#f5f5f7; --bg-sunk:#e9eaee; --ink:#0b0c10; --ink-2:#424754; --ink-3:#7a808d; --line:#e3e5ea;
+  --teal:#0e7c7b; --tira:var(--teal); --io:var(--teal); --ims:var(--teal);
+  --ok:#1f7a4d; --warn:#a5650b; --risk:#b4342b; --ban:#5b1b16;
+  --night-bg:#08090c; --night-card:#111318; --night-ink:#f3f4f7; --night-2:#a3a9b6; --night-3:#6d7381; --night-line:#22252d; --night-tira:#6cc3ba;
+  --f-sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --wrap:1200px; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b0c10;--bg-soft:#131419;--bg-sunk:#1b1d24;--ink:#f3f4f7;--ink-2:#b9bec9;--ink-3:#868c99;--line:#24272f;
+  --teal:#5fb3ab;--tira:var(--teal);--io:var(--teal);--ims:var(--teal);--ok:#5cc495;--warn:#e0a54a;--risk:#f07a70;--ban:#ffb4ab;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b0c10;--bg-soft:#131419;--bg-sunk:#1b1d24;--ink:#f3f4f7;--ink-2:#b9bec9;--ink-3:#868c99;--line:#24272f;
+  --teal:#5fb3ab;--tira:var(--teal);--io:var(--teal);--ims:var(--teal);--ok:#5cc495;--warn:#e0a54a;--risk:#f07a70;--ban:#ffb4ab;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font-family:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:28px}
+@media (max-width:560px){.wrap{padding-inline:18px}}
+h1,h2,h3,h4{font-family:var(--f-sans);text-wrap:balance;margin:0;font-weight:600;letter-spacing:-.04em}
+h1{font-size:clamp(48px,8.6vw,118px);line-height:.95;letter-spacing:-.055em}
+h2{font-size:clamp(36px,5.6vw,72px);line-height:1;letter-spacing:-.048em}
+h3{font-size:clamp(22px,2.2vw,28px);line-height:1.15;letter-spacing:-.025em}
+p{margin:0}
+.serif{font-family:var(--f-serif);font-style:italic;font-weight:300;letter-spacing:-.025em}
+.u2{color:var(--teal)}
+h1 .serif,h2 .serif{color:var(--teal)}
+.night .serif,.finale .serif{color:var(--night-tira)}
+.lede{font-size:clamp(18px,1.7vw,22px);color:var(--ink-2);max-width:58ch;line-height:1.5;letter-spacing:-.01em}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.muted{color:var(--ink-3)}
+:focus-visible{outline:2px solid var(--tira);outline-offset:3px;border-radius:8px}
+
+/* subtle entrance for chapters, starting from visible */
+@supports (animation-timeline:view()){
+  .rise{animation:riseIn linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+  @keyframes riseIn{from{transform:translateY(40px) scale(.985)}to{transform:none}}
+}
+@media (prefers-reduced-motion:reduce){.rise{animation:none!important}html{scroll-behavior:auto}}
+
+/* Header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(1.6) blur(20px);-webkit-backdrop-filter:saturate(1.6) blur(20px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:21px;letter-spacing:-.05em}
+.brand svg{width:22px;height:22px;display:block}
+.links{display:flex;gap:2px;align-items:center}
+.links a{text-decoration:none;font-size:14px;color:var(--ink-2);padding:7px 13px;border-radius:999px;transition:color .2s}
+.links a:hover{color:var(--ink)}
+.links a[aria-current="page"]{color:var(--ink);background:var(--bg-soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:500;font-size:15px;padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s,border-color .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink-3)}
+.btn-sm{padding:8px 16px;font-size:14px}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(3px)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:14px;cursor:pointer}
+@media (max-width:860px){
+  .links{display:none;position:absolute;left:0;right:0;top:58px;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 18px 20px}
+  .links.open{display:flex}
+  .links a{padding:14px 2px;font-size:18px;border-radius:0;border-bottom:1px solid var(--line)}
+  .links a[aria-current="page"]{background:none}
+  .menu-btn{display:inline-block}.nav-cta{display:none}
+}
+
+.page{display:none}
+.page.on{display:block;animation:pageIn .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pageIn{from{transform:translateY(10px)}to{transform:none}}
+section{padding-block:clamp(88px,12vw,168px)}
+.center{text-align:center}
+.center .lede{margin-inline:auto}
+
+/* HERO */
+.hero{padding-block:clamp(72px,10vw,136px) 0;text-align:center;position:relative}
+.hero .chip-row{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 6px;font-size:13px;color:var(--ink-2);margin-bottom:34px;text-decoration:none}
+.hero .chip-row b{background:var(--ink);color:var(--bg);border-radius:999px;padding:3px 10px;font-weight:500;font-size:12px}
+.hero h1 .serif{font-weight:300}
+.hero .lede{margin:30px auto 0}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:38px}
+
+/* STAGE */
+.stage-wrap{margin-top:clamp(56px,7vw,96px);position:relative}
+.stage-glow{position:absolute;inset:8% -10% -10%;pointer-events:none;filter:blur(60px);opacity:.55;transition:background 1s ease;z-index:0}
+.stage{position:relative;z-index:1;background:var(--bg);border:1px solid var(--line);border-radius:26px;box-shadow:0 60px 120px -50px rgba(11,12,16,.35),0 10px 30px -10px rgba(11,12,16,.08);overflow:hidden;text-align:left}
+.seg{display:flex;justify-content:center;gap:4px;padding:14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.seg button{position:relative;overflow:hidden;border:0;background:transparent;color:var(--ink-3);font-size:14px;font-weight:500;padding:9px 18px;border-radius:999px;cursor:pointer;transition:color .2s,background .2s}
+.seg button[aria-selected="true"]{color:var(--ink);background:var(--bg-soft)}
+.seg button .prog{position:absolute;left:18px;right:18px;bottom:4px;height:2px;background:var(--line);border-radius:2px;overflow:hidden;opacity:0}
+.seg button[aria-selected="true"] .prog{opacity:1}
+.seg button .prog i{display:block;height:100%;width:0;background:var(--ink)}
+.panes{position:relative;min-height:440px}
+.pane{position:absolute;inset:0;padding:clamp(18px,3vw,36px);opacity:0;transform:scale(.985);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.pane.on{opacity:1;transform:none;pointer-events:auto;position:relative}
+.pane:not(.on){visibility:hidden}
+@media (max-width:760px){.panes{min-height:0}}
+
+/* shared app chrome */
+.app{display:grid;grid-template-columns:200px 1fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;min-height:380px;font-size:13px}
+.app>*{min-width:0}
+.side{background:var(--bg-soft);border-right:1px solid var(--line);padding:16px 12px;display:grid;gap:4px;align-content:start}
+.side .pn{font-weight:600;letter-spacing:-.02em;font-size:15px;padding:4px 8px 14px;display:flex;align-items:center;gap:8px}
+.side .pn i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.side a{padding:7px 8px;border-radius:7px;color:var(--ink-2);text-decoration:none;display:flex;justify-content:space-between}
+.side a.on{background:var(--bg);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.side a small{font-family:var(--f-mono);color:var(--ink-3)}
+.main{padding:20px 22px;display:grid;gap:18px;align-content:start}
+.main-h{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.main-h h4{font-size:20px;letter-spacing:-.03em}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:4px}
+.kpi .k{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+.kpi .v{font-size:26px;font-weight:600;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:13px;color:var(--ink-3);font-weight:500;letter-spacing:0}
+@media (max-width:760px){.app{grid-template-columns:1fr}.side{display:none}.kpis{grid-template-columns:1fr 1fr}.kpis .kpi:last-child{grid-column:1/-1}}
+
+.reg{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.reg th{font:500 10.5px var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:0 10px 8px}
+.reg td{padding:11px 10px;border-top:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
+.reg td:first-child{color:var(--ink);font-weight:500}
+.tscroll{overflow-x:auto}
+.pill{display:inline-block;font:500 11px var(--f-mono);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.p-ban{color:var(--ban);background:color-mix(in srgb,var(--risk) 22%,transparent)}
+.p-high{color:var(--risk);background:color-mix(in srgb,var(--risk) 12%,transparent)}
+.p-lim{color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,transparent)}
+.p-min{color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.bar{height:5px;background:var(--bg-sunk);border-radius:9px;overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--ink)}
+
+.crit{display:grid;gap:13px}
+.crow{display:grid;grid-template-columns:22px 1fr 46px;gap:12px;align-items:center}
+.crow b{font:500 12px var(--f-mono);color:var(--ink-3)}
+.crow .l{font-size:13px;color:var(--ink-2);margin-bottom:6px}
+.crow .n{font:500 13px var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.crow .bar i{background:var(--io);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.fb{padding:12px 14px;background:var(--bg-soft);border-radius:10px;color:var(--ink-2);line-height:1.5}
+.fb em{font-style:normal;color:var(--ink);font-weight:500}
+
+.phone{width:190px;flex:none;border:1px solid var(--line);border-radius:30px;padding:10px;background:var(--bg);box-shadow:0 30px 60px -30px rgba(11,12,16,.3)}
+.phone .scr{border-radius:22px;background:var(--bg-soft);padding:18px 12px 14px;display:grid;gap:7px;text-align:center;min-height:300px;align-content:start;transition:background .5s}
+.phone .av{width:46px;height:46px;border-radius:50%;margin:2px auto 4px;background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--ims) 40%,var(--bg)),color-mix(in srgb,var(--ims) 75%,var(--ink)))}
+.phone .nm{font-weight:600;font-size:13.5px;letter-spacing:-.02em}
+.phone .sub{font-size:11px;color:var(--ink-3);margin-bottom:6px}
+.phone .lk{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 6px;font-size:11.5px}
+.phone .url{font-family:var(--f-mono);font-size:9.5px;color:var(--ink-3);margin-top:4px}
+
+/* Statement */
+.statement{padding-block:clamp(110px,15vw,210px)}
+.statement p{font-size:clamp(30px,4.4vw,58px);line-height:1.12;letter-spacing:-.04em;font-weight:500;max-width:22ch;margin:0 auto;text-align:center;text-wrap:balance}
+.statement .w{color:var(--ink-3);transition:color .35s ease}
+.statement .w.lit{color:var(--ink)}
+.statement .w.hl.lit{font-family:var(--f-serif);font-style:italic;font-weight:300}
+
+/* Chapters */
+.chapter-head{display:grid;gap:22px;max-width:860px;margin-bottom:clamp(44px,6vw,80px)}
+.chapter-head .tagline{display:flex;align-items:center;gap:10px}
+.chapter-head .tagline i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.chapter-head .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+
+/* TIRA dark chapter */
+.night{background:var(--night-bg);color:var(--night-ink);--ink:var(--night-ink);--ink-2:var(--night-2);--ink-3:var(--night-3);--line:var(--night-line);--bg:var(--night-card);--bg-soft:#171a21;--bg-sunk:#1f232b;--tira:var(--night-tira);--ok:#5cc495;--warn:#e0a54a;--risk:#f07a70;--ban:#ffb4ab;color-scheme:dark;position:relative;overflow:hidden}
+.night::before{content:"";position:absolute;inset:-20% -10% auto 40%;height:80%;background:radial-gradient(closest-side,color-mix(in srgb,var(--night-tira) 22%,transparent),transparent);filter:blur(40px);pointer-events:none}
+.night .btn-primary{background:var(--night-ink);color:var(--night-bg)}
+.night>.wrap{position:relative}
+.classifier{display:grid;grid-template-columns:1fr 1.1fr;gap:20px}
+.classifier>*{min-width:0}
+.uses{display:grid;gap:8px;align-content:start}
+.uses .lbl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.use{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;width:100%;background:var(--night-card);border:1px solid var(--night-line);color:var(--night-2);padding:16px 18px;border-radius:14px;font-size:15.5px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.use:hover{color:var(--night-ink);border-color:#353a45}
+.use[aria-pressed="true"]{color:var(--night-ink);border-color:var(--night-tira);background:color-mix(in srgb,var(--night-tira) 9%,var(--night-card))}
+.use .ar{font-family:var(--f-mono);font-size:12px;color:var(--night-3)}
+.verdict{background:var(--night-card);border:1px solid var(--night-line);border-radius:20px;padding:clamp(22px,3vw,34px);display:grid;gap:20px;align-content:start;min-height:420px}
+.verdict .top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--f-mono);font-size:11.5px;color:var(--night-3)}
+.verdict h3{font-size:clamp(30px,3.6vw,46px);letter-spacing:-.045em}
+.verdict .basis{font-family:var(--f-mono);font-size:13px;color:var(--night-tira)}
+.trace{display:grid;gap:0;border-top:1px solid var(--night-line)}
+.trace div{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--night-line);font-size:14.5px;color:var(--night-2)}
+.trace div b{font:500 12px var(--f-mono);color:var(--night-3);padding-top:2px}
+.oblig{display:flex;flex-wrap:wrap;gap:6px}
+.oblig span{font-size:12.5px;border:1px solid var(--night-line);border-radius:999px;padding:5px 11px;color:var(--night-2)}
+.verdict .fine{font-size:12px;color:var(--night-3)}
+.verdict.swap>*{animation:fadeUp .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fadeUp{from{transform:translateY(6px)}to{transform:none}}
+@media (max-width:900px){.classifier{grid-template-columns:1fr}.verdict{min-height:0}}
+.fwrow{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:clamp(48px,6vw,80px);padding-top:28px;border-top:1px solid var(--night-line);align-items:baseline}
+.fwrow span{font-size:clamp(20px,2.4vw,30px);letter-spacing:-.03em;color:var(--night-2);font-weight:500}
+.fwrow .eyebrow{color:var(--night-3)}
+
+/* IO chapter */
+.io-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:20px;align-items:stretch}
+.io-grid>*{min-width:0}
+.card{border:1px solid var(--line);border-radius:22px;background:var(--bg);padding:clamp(20px,3vw,32px)}
+.attempts{display:inline-flex;background:var(--bg-soft);border-radius:999px;padding:4px;gap:2px}
+.attempts button{border:0;background:transparent;color:var(--ink-3);font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:999px;cursor:pointer}
+.attempts button[aria-pressed="true"]{background:var(--bg);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.bigscore{display:flex;align-items:baseline;gap:8px;margin:22px 0 4px}
+.bigscore .v{font-size:clamp(64px,8vw,104px);font-weight:600;letter-spacing:-.06em;line-height:.9;font-variant-numeric:tabular-nums}
+.bigscore .of{font-size:22px;color:var(--ink-3);font-weight:500}
+.trend{display:grid;gap:14px;align-content:space-between;height:100%}
+.trend svg{width:100%;height:auto;display:block;overflow:visible}
+.trend .cap{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+@media (max-width:900px){.io-grid{grid-template-columns:1fr}}
+
+/* IMS chapter */
+.soft{background:var(--bg-soft)}
+.ims-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(20px,4vw,56px);align-items:center}
+.ims-grid>*{min-width:0}
+.ctrl{display:grid;gap:22px}
+.ctrl label{display:grid;gap:8px;font-size:14px;font-weight:500}
+.ctrl input[type="text"]{font:400 16px var(--f-sans);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+.ctrl input[type="text"]:focus{outline:none;border-color:var(--ims);box-shadow:0 0 0 3px color-mix(in srgb,var(--ims) 18%,transparent)}
+.clock{display:flex;justify-content:space-between;align-items:baseline}
+.clock b{font:500 28px var(--f-mono);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
+input[type="range"]{width:100%;accent-color:var(--ims)}
+.days{display:flex;gap:6px;flex-wrap:wrap}
+.days button{border:1px solid var(--line);background:var(--bg);color:var(--ink-2);border-radius:999px;padding:7px 12px;font-size:13px;cursor:pointer}
+.days button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rules{display:grid;gap:8px;font-family:var(--f-mono);font-size:12.5px}
+.rule{display:flex;justify-content:space-between;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--ink-3);transition:all .3s}
+.rule.on{border-color:var(--ims);color:var(--ink);background:color-mix(in srgb,var(--ims) 8%,var(--bg))}
+.qr-card{display:grid;gap:12px;justify-items:start}
+.qr-card canvas{width:148px;height:148px;border-radius:14px;background:#fff;padding:10px;border:1px solid var(--line);image-rendering:pixelated}
+.qr-card .u{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);word-break:break-all}
+@media (max-width:980px){.ims-grid{grid-template-columns:1fr 1fr}.ims-grid .phone-col{grid-column:2;grid-row:1/3}}
+@media (max-width:640px){.ims-grid{grid-template-columns:1fr}.ims-grid .phone-col{grid-column:auto;grid-row:auto;justify-self:center}}
+
+/* Bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.bento>div{background:var(--bg-soft);border-radius:24px;padding:clamp(24px,3vw,36px);display:grid;gap:14px;align-content:space-between;min-height:260px;overflow:hidden;min-width:0}
+.bento .b1{grid-column:span 4}.bento .b2{grid-column:span 2}.bento .b3{grid-column:span 2}.bento .b4{grid-column:span 4}
+.bento h3{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.04em}
+.bento p{color:var(--ink-2);font-size:15.5px;max-width:44ch}
+.coord{font-family:var(--f-mono);font-size:clamp(28px,4.2vw,56px);letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.coord span{color:var(--ink-3)}
+.why{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;color:var(--ink-2);display:grid;gap:6px}
+.why b{color:var(--ink);font-weight:500}
+.since{font-size:clamp(56px,7vw,96px);font-weight:600;letter-spacing:-.06em;line-height:.9}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px}
+.flow span{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+.flow i{font-style:normal;color:var(--ink-3)}
+@media (max-width:900px){.bento{grid-template-columns:1fr 1fr}.bento>div{grid-column:span 2!important;min-height:0}}
+
+/* Final CTA */
+.finale{background:var(--night-bg);color:var(--night-ink);text-align:center;overflow:hidden;position:relative}
+.finale::before{content:"";position:absolute;left:50%;top:60%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,color-mix(in srgb,var(--night-tira) 20%,transparent),transparent 70%);pointer-events:none;max-width:200vw}
+.finale>.wrap{position:relative}
+.finale h2{font-size:clamp(44px,7.4vw,104px);letter-spacing:-.055em}
+.finale p{color:var(--night-2);margin:24px auto 0;max-width:46ch;font-size:clamp(17px,1.6vw,20px)}
+.finale .btn-primary{background:var(--night-ink);color:var(--night-bg)}
+.finale .btn-ghost{color:var(--night-ink);border-color:var(--night-line)}
+.finale .hero-ctas{margin-top:40px}
+
+/* Products page */
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(48px,6vw,72px)}
+.pcard{border-radius:24px;padding:28px;text-decoration:none;display:grid;gap:12px;align-content:space-between;min-height:300px;background:var(--bg-soft);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.pcard:hover{transform:translateY(-4px)}
+.pcard::after{content:"";position:absolute;right:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;background:var(--h);opacity:.14;filter:blur(30px);transition:opacity .35s}
+.pcard:hover::after{opacity:.26}
+.pcard .nm{font-size:30px;font-weight:600;letter-spacing:-.045em}
+.pcard p{color:var(--ink-2);font-size:15px}
+.pcard .go{font-size:14px;font-weight:500}
+.pcard .who{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--h)}
+@media (max-width:900px){.pcards{grid-template-columns:1fr}.pcard{min-height:0}}
+.pd{border-top:1px solid var(--line)}
+.pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px)}
+.pd-grid>*{min-width:0}
+.spec{margin:36px 0 0;border-top:1px solid var(--line)}
+.spec div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.spec dt{color:var(--ink-3);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
+.spec dd{margin:0}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.feat div{padding:24px 24px 24px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.feat div:nth-child(even){padding-left:24px;padding-right:0;border-left:1px solid var(--line)}
+.feat h4{font-size:17px;letter-spacing:-.02em}
+.feat p{font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.pd-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.feat{grid-template-columns:1fr}.feat div:nth-child(even){padding-left:0;border-left:0}.spec div{grid-template-columns:1fr;gap:4px}}
+
+/* Pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{border:1px solid var(--line);border-radius:26px;padding:34px;display:grid;gap:20px;align-content:start;background:var(--bg)}
+.plan.dark{background:var(--night-bg);color:var(--night-ink);border-color:var(--night-bg)}
+.plan.dark .muted,.plan.dark li{color:var(--night-2)}
+.plan.dark .btn-primary{background:var(--night-ink);color:var(--night-bg)}
+.plan .pn{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.02em}
+.plan .pn i{width:10px;height:10px;border-radius:3px}
+.plan .model{font-size:36px;font-weight:600;letter-spacing:-.05em;line-height:1.05}
+.plan ul{list-style:none;padding:0;margin:0;display:grid;gap:11px;font-size:15px;color:var(--ink-2)}
+.plan li{padding-left:24px;position:relative}
+.plan li::before{content:"";position:absolute;left:3px;top:.5em;width:10px;height:5px;border-left:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg)}
+@media (max-width:980px){.plans{grid-template-columns:1fr;max-width:560px;margin-inline:auto}}
+.faq{max-width:860px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:24px 0}
+.faq summary{cursor:pointer;font-weight:500;font-size:19px;letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--ink-3);font-weight:300;font-size:24px;line-height:1;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--ink-2);margin-top:12px;max-width:66ch}
+
+/* About */
+.about-hero h1{font-size:clamp(46px,7.6vw,104px)}
+.prose{display:grid;gap:22px;color:var(--ink-2);font-size:clamp(18px,1.6vw,21px);line-height:1.55;max-width:60ch;letter-spacing:-.01em}
+.prose strong{color:var(--ink);font-weight:500}
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(32px,6vw,96px)}
+.about-grid>*{min-width:0}
+.founder{display:grid;gap:16px;align-content:start}
+.founder .mono{width:88px;height:88px;border-radius:50%;background:linear-gradient(145deg,var(--bg-soft),var(--bg-sunk));border:1px solid var(--line);display:grid;place-items:center;font-size:28px;font-weight:600;letter-spacing:-.04em}
+.founder b{font-size:20px;font-weight:600;letter-spacing:-.03em;display:block}
+.founder p{color:var(--ink-3);font-size:15px}
+.timeline{display:grid;gap:0;border-top:1px solid var(--line)}
+.timeline div{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.timeline b{font:500 14px var(--f-mono);color:var(--ink-3);padding-top:3px}
+.timeline h4{font-size:19px;letter-spacing:-.02em}
+.timeline p{color:var(--ink-2);font-size:15.5px;margin-top:4px}
+@media (max-width:820px){.about-grid{grid-template-columns:1fr}.timeline div{grid-template-columns:1fr;gap:6px}}
+
+/* Demo */
+.demo-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(32px,6vw,96px);align-items:start}
+.demo-grid>*{min-width:0}
+.steps{list-style:none;padding:0;margin:44px 0 0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:14px;padding:20px 0;border-top:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);font:500 13px var(--f-mono);color:var(--ink-3);padding-top:3px}
+.steps b{display:block;font-weight:500;letter-spacing:-.01em}
+.steps span{color:var(--ink-2);font-size:15px}
+form.fcard{background:var(--bg-soft);border-radius:28px;padding:clamp(24px,4vw,44px);display:grid;gap:20px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+@media (max-width:900px){.demo-grid{grid-template-columns:1fr}}
+form.fcard label{display:grid;gap:8px;font-size:14px;font-weight:500}
+form.fcard input,form.fcard select,form.fcard textarea{font:400 16px var(--f-sans);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 14px;width:100%}
+form.fcard input:focus,form.fcard select:focus,form.fcard textarea:focus{outline:none;border-color:var(--ink-3);box-shadow:0 0 0 4px var(--bg-sunk)}
+textarea{min-height:110px;resize:vertical}
+fieldset{border:0;padding:0;margin:0}
+legend{font-size:14px;font-weight:500;margin-bottom:10px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-block;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:400;cursor:pointer;transition:all .2s}
+.chip input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip input:focus-visible+span{outline:2px solid var(--tira);outline-offset:2px}
+.err{color:var(--risk);font-size:13.5px}
+.note{font-size:12.5px;color:var(--ink-3)}
+.done{background:var(--bg-soft);border-radius:28px;padding:44px;display:grid;gap:14px}
+
+/* Legal pages */
+.legal-hero{padding-block:clamp(64px,9vw,120px) clamp(32px,4vw,56px)}
+.legal-hero h1{font-size:clamp(44px,6.6vw,88px)}
+.legal-meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;font-size:14px;color:var(--ink-3)}
+.legal-meta b{color:var(--ink);font-weight:500}
+.legal-grid{display:grid;grid-template-columns:240px 1fr;gap:clamp(32px,6vw,96px);align-items:start;padding-bottom:clamp(88px,10vw,140px);border-top:1px solid var(--line);padding-top:clamp(40px,5vw,64px)}
+.legal-grid>*{min-width:0}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);display:grid;gap:2px;font-size:14px}
+.toc .eyebrow{margin-bottom:10px}
+.toc a{text-decoration:none;color:var(--ink-3);padding:6px 0;line-height:1.35}
+.toc a:hover{color:var(--ink)}
+.legal{max-width:70ch;display:grid;gap:18px;color:var(--ink-2);font-size:16.5px;line-height:1.65}
+.legal h2{font-size:clamp(22px,2.2vw,28px);letter-spacing:-.03em;color:var(--ink);margin-top:36px;scroll-margin-top:84px}
+.legal h2:first-child{margin-top:0}
+.legal h2 .num{font:500 13px var(--f-mono);color:var(--teal);margin-right:12px;letter-spacing:0;vertical-align:3px}
+.legal h3{font-size:17px;letter-spacing:-.01em;color:var(--ink);margin-top:8px}
+.legal ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.legal strong{color:var(--ink);font-weight:500}
+.legal a{color:var(--teal);text-underline-offset:3px}
+.legal .callout{background:var(--bg-soft);border-radius:16px;padding:18px 20px;font-size:15.5px}
+.ltable{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+.ltable th{text-align:left;font:500 11.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:0 12px 10px 0;vertical-align:bottom}
+.ltable td{padding:14px 12px 14px 0;border-top:1px solid var(--line);vertical-align:top}
+.ltable td:first-child{color:var(--ink);font-weight:500}
+.fill{background:color-mix(in srgb,var(--teal) 14%,transparent);color:var(--ink);border-radius:5px;padding:1px 6px;font-family:var(--f-mono);font-size:.86em;white-space:nowrap}
+@media (max-width:900px){.legal-grid{grid-template-columns:1fr}.toc{position:static;grid-template-columns:1fr 1fr;column-gap:16px}.toc .eyebrow{grid-column:1/-1}}
+@media (max-width:480px){.toc{grid-template-columns:1fr}}
+.consent{font-size:13px;color:var(--ink-3)}
+.consent a{color:var(--ink-2)}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding-block:64px 40px;font-size:14px;color:var(--ink-3)}
+.foot{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:32px}
+.foot h5{margin:0 0 14px;font:500 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink)}
+.foot-b{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+@media (max-width:820px){.foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#home" data-go="home" aria-label="NUUX home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x=".5" y=".5" width="23" height="23" rx="7" fill="#0b0c10" stroke="#2a2d35" stroke-width=".6"/><path d="M5.6 16.2V11a3.2 3.2 0 0 1 6.4 0v2" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round"/><path d="M12 13a3.2 3.2 0 0 0 6.4 0V7.8" fill="none" stroke="#2fa69b" stroke-width="2.3" stroke-linecap="round"/></svg><span class="wm">nu<span class="u2">u</span>x</span>
+    </a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="#products" data-go="products">Products</a>
+      <a href="#pricing" data-go="pricing">Pricing</a>
+      <a href="#about" data-go="about">About</a>
+      <a href="#demo" data-go="demo">Book a demo</a>
+    </nav>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn btn-primary btn-sm nav-cta" href="#demo" data-go="demo">Book a demo</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="links">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= HOME ================= -->
+<div class="page" id="p-home">
+  <div class="wrap hero">
+    <a class="chip-row" href="#products" data-go="products"><b>Studio</b>Three products, one standard of craft <span aria-hidden="true">→</span></a>
+    <h1>Software made<br>with unusual <span class="serif">care.</span></h1>
+    <p class="lede">NUUX is a software studio in Tallinn. We build focused products for compliance teams, IB classrooms and anyone whose life has more than one side.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#demo" data-go="demo">Book a demo <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#tira-ch" data-scroll="tira-ch">See the products</a>
+    </div>
+
+    <div class="stage-wrap rise">
+      <div class="stage-glow" id="glow"></div>
+      <div class="stage">
+        <div class="seg" role="tablist" aria-label="Products">
+          <button role="tab" aria-selected="true" data-i="0">TIRA<span class="prog"><i></i></span></button>
+          <button role="tab" aria-selected="false" data-i="1">IO Examiner<span class="prog"><i></i></span></button>
+          <button role="tab" aria-selected="false" data-i="2">In My Spheres<span class="prog"><i></i></span></button>
+        </div>
+        <div class="panes">
+          <!-- TIRA pane -->
+          <div class="pane on" role="tabpanel" aria-label="TIRA">
+            <div class="app">
+              <div class="side">
+                <div class="pn"><i style="background:var(--tira)"></i>TIRA</div>
+                <a class="on" href="#home" tabindex="-1">Register <small>24</small></a>
+                <a href="#home" tabindex="-1">Controls <small>118</small></a>
+                <a href="#home" tabindex="-1">Evidence <small>342</small></a>
+                <a href="#home" tabindex="-1">Approvals <small>5</small></a>
+                <a href="#home" tabindex="-1">Reports</a>
+              </div>
+              <div class="main">
+                <div class="main-h"><h4>AI system register</h4><span class="eyebrow">Example workspace</span></div>
+                <div class="kpis">
+                  <div class="kpi"><span class="k">Systems</span><span class="v">24</span></div>
+                  <div class="kpi"><span class="k">High risk</span><span class="v">6</span></div>
+                  <div class="kpi"><span class="k">Audit ready</span><span class="v">78<small>%</small></span></div>
+                </div>
+                <div class="tscroll"><table class="reg">
+                  <thead><tr><th>System</th><th>Classification</th><th>Evidence</th><th>Owner</th></tr></thead>
+                  <tbody>
+                    <tr><td>CV screening model</td><td><span class="pill p-high">High · Annex III</span></td><td><div class="bar"><i style="width:88%;background:var(--tira)"></i></div></td><td>People Ops</td></tr>
+                    <tr><td>Support assistant</td><td><span class="pill p-lim">Limited · Art. 50</span></td><td><div class="bar"><i style="width:100%;background:var(--tira)"></i></div></td><td>Customer</td></tr>
+                    <tr><td>Credit decisioning</td><td><span class="pill p-high">High · Annex III</span></td><td><div class="bar"><i style="width:56%;background:var(--tira)"></i></div></td><td>Risk</td></tr>
+                    <tr><td>Inbox spam filter</td><td><span class="pill p-min">Minimal</span></td><td><div class="bar"><i style="width:100%;background:var(--tira)"></i></div></td><td>IT</td></tr>
+                  </tbody>
+                </table></div>
+              </div>
+            </div>
+          </div>
+          <!-- IO pane -->
+          <div class="pane" role="tabpanel" aria-label="IO Examiner">
+            <div class="app">
+              <div class="side">
+                <div class="pn"><i style="background:var(--io)"></i>IO Examiner</div>
+                <a class="on" href="#home" tabindex="-1">Practice 3 <small>31</small></a>
+                <a href="#home" tabindex="-1">Practice 2 <small>26</small></a>
+                <a href="#home" tabindex="-1">Practice 1 <small>21</small></a>
+                <a href="#home" tabindex="-1">New oral</a>
+              </div>
+              <div class="main">
+                <div class="main-h"><h4>Persepolis &amp; Banksy</h4><span class="eyebrow">31 / 40 · example</span></div>
+                <div class="crit">
+                  <div class="crow"><b>A</b><div><div class="l">Knowledge, understanding and interpretation</div><div class="bar"><i style="width:80%;background:var(--io)"></i></div></div><span class="n">8/10</span></div>
+                  <div class="crow"><b>B</b><div><div class="l">Analysis and evaluation</div><div class="bar"><i style="width:70%;background:var(--io)"></i></div></div><span class="n">7/10</span></div>
+                  <div class="crow"><b>C</b><div><div class="l">Focus and organization</div><div class="bar"><i style="width:80%;background:var(--io)"></i></div></div><span class="n">8/10</span></div>
+                  <div class="crow"><b>D</b><div><div class="l">Language</div><div class="bar"><i style="width:80%;background:var(--io)"></i></div></div><span class="n">8/10</span></div>
+                </div>
+                <div class="fb"><em>Next step for B.</em> You name the stencil technique, then move on. Explain what it does to the viewer and connect it to your global issue.</div>
+              </div>
+            </div>
+          </div>
+          <!-- IMS pane -->
+          <div class="pane" role="tabpanel" aria-label="In My Spheres">
+            <div style="display:flex;gap:clamp(16px,4vw,48px);justify-content:center;align-items:center;flex-wrap:wrap;padding-block:12px">
+              <div class="phone"><div class="scr"><div class="av"></div><div class="nm">Iris Vogel</div><div class="sub">Brand consultant · Berlin</div><div class="lk">Book a discovery call</div><div class="lk">Case studies</div><div class="lk">Newsletter</div><div class="url">inmyspheres.com/iris.work</div></div></div>
+              <div class="phone" style="transform:translateY(24px)"><div class="scr"><div class="av" style="background:radial-gradient(circle at 30% 30%,#e9d9c4,#9a7a52)"></div><div class="nm">Iris after hours</div><div class="sub">Ceramics · Sunday markets</div><div class="lk">This week's pieces</div><div class="lk">Instagram</div><div class="lk">Market dates</div><div class="url">inmyspheres.com/iris.studio</div></div></div>
+              <div class="rules" style="min-width:220px;max-width:280px;flex:1">
+                <div class="eyebrow" style="margin-bottom:4px">One QR · smart rules</div>
+                <div class="rule on"><span>Mon–Fri · 9–18</span><span>→ Work</span></div>
+                <div class="rule"><span>Evenings</span><span>→ Studio</span></div>
+                <div class="rule"><span>Sunday</span><span>→ Market</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statement -->
+  <div class="wrap statement" id="statement">
+    <p id="stmt">We build for the compliance officer preparing for an audit, the student rehearsing the oral that shapes their grade, and anyone whose life has more than <span data-hl>one side.</span></p>
+  </div>
+
+  <!-- TIRA chapter -->
+  <section class="night" id="tira-ch">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="tagline"><i style="background:var(--night-tira)"></i><span class="eyebrow">TIRA · for compliance teams</span></div>
+        <h2>Every AI system,<br>classified and <span class="serif">explained.</span></h2>
+        <p class="lede">TIRA is the AI governance platform built for European regulation. It shows you which rule produced each decision, so you can defend it to a regulator. Try a classification.</p>
+      </div>
+      <div class="classifier rise">
+        <div class="uses" id="uses">
+          <div class="lbl">Choose a use case</div>
+        </div>
+        <div class="verdict" id="verdict" aria-live="polite"></div>
+      </div>
+      <div class="fwrow"><span class="eyebrow">Frameworks</span><span>EU AI Act</span><span>DORA</span><span>NIS2</span><span>ISO/IEC 42001</span></div>
+      <div class="chapter-head" style="margin:48px 0 0"><div class="btns"><a class="btn btn-primary" href="#demo" data-go="demo" data-product="TIRA">Book a TIRA demo <span class="arr">→</span></a><a class="btn btn-ghost" style="color:var(--night-ink);border-color:var(--night-line)" href="https://tira.ee" target="_blank" rel="noopener">tira.ee</a></div></div>
+    </div>
+  </section>
+
+  <!-- IO chapter -->
+  <section id="io-ch">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="tagline"><i style="background:var(--io)"></i><span class="eyebrow">IO Examiner · for IB English</span></div>
+        <h2>Know the score<br>before the real <span class="serif">oral.</span></h2>
+        <p class="lede">Instant grades and feedback for the IB DP English Individual Oral, marked against the four official criteria. Each practice attempt shows students exactly what to fix next.</p>
+      </div>
+      <div class="io-grid rise">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <span class="eyebrow">Example student · Persepolis &amp; Banksy</span>
+            <div class="attempts" id="attempts" role="group" aria-label="Practice attempt">
+              <button aria-pressed="false" data-a="0">Practice 1</button><button aria-pressed="false" data-a="1">Practice 2</button><button aria-pressed="true" data-a="2">Practice 3</button>
+            </div>
+          </div>
+          <div class="bigscore"><span class="v" id="ioTotal">31</span><span class="of">/ 40</span></div>
+          <div class="crit" id="ioCrit" style="margin-top:18px"></div>
+          <div class="fb" id="ioFb" style="margin-top:20px"></div>
+        </div>
+        <div class="card trend">
+          <div><span class="eyebrow">Progress across attempts</span><h3 style="margin-top:10px">Ten marks in three practices.</h3></div>
+          <svg viewBox="0 0 320 180" role="img" aria-label="Total score rising from 21 to 26 to 31 out of 40 across three practice attempts">
+            <g stroke="var(--line)" stroke-width="1">
+              <line x1="20" y1="20" x2="300" y2="20"/><line x1="20" y1="70" x2="300" y2="70"/><line x1="20" y1="120" x2="300" y2="120"/><line x1="20" y1="170" x2="300" y2="170"/>
+            </g>
+            <g font-family="Geist Mono, monospace" font-size="10" fill="var(--ink-3)">
+              <text x="0" y="23">40</text><text x="0" y="73">30</text><text x="0" y="123">20</text><text x="0" y="173">10</text>
+            </g>
+            <path d="M40 125 L160 100 L280 75 L280 170 L40 170 Z" fill="var(--io)" opacity=".1"/>
+            <path d="M40 125 L160 100 L280 75" fill="none" stroke="var(--io)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="dots"><circle cx="40" cy="125" r="5" fill="var(--bg)" stroke="var(--io)" stroke-width="2"/><circle cx="160" cy="100" r="5" fill="var(--bg)" stroke="var(--io)" stroke-width="2"/><circle cx="280" cy="75" r="6" fill="var(--io)"/></g>
+            <g font-family="Geist, sans-serif" font-size="12" font-weight="600" fill="var(--ink)" text-anchor="middle">
+              <text x="40" y="111">21</text><text x="160" y="86">26</text><text x="280" y="60">31</text>
+            </g>
+          </svg>
+          <div class="cap"><span>Practice 1</span><span>Practice 2</span><span>Practice 3</span></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary btn-sm" href="https://individualoral.com" target="_blank" rel="noopener">Try it free <span class="arr">→</span></a><a class="btn btn-ghost btn-sm" href="#demo" data-go="demo" data-product="IO Examiner">School demo</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMS chapter -->
+  <section class="soft" id="ims-ch">
+    <div class="wrap">
+      <div class="chapter-head">
+        <div class="tagline"><i style="background:var(--ims)"></i><span class="eyebrow">In My Spheres · for every side of you</span></div>
+        <h2>One QR code.<br>The right page, <span class="serif">every time.</span></h2>
+        <p class="lede">Build a page for each side of your life and share them all from one code. Type a name and move the clock to watch the routing work.</p>
+      </div>
+      <div class="ims-grid rise">
+        <div class="ctrl">
+          <label for="imsName">Your name<input type="text" id="imsName" value="Iris Vogel" maxlength="28" autocomplete="off"></label>
+          <div>
+            <div class="clock"><span style="font-size:14px;font-weight:500">Time of scan</span><b id="imsTime">10:00</b></div>
+            <input type="range" id="imsHour" min="0" max="23" value="10" aria-label="Hour of scan">
+          </div>
+          <div>
+            <div style="font-size:14px;font-weight:500;margin-bottom:8px">Day</div>
+            <div class="days" id="imsDays" role="group" aria-label="Day of scan"></div>
+          </div>
+        </div>
+        <div class="phone-col">
+          <div class="phone"><div class="scr" id="imsScr"><div class="av" id="imsAv"></div><div class="nm" id="imsNm">Iris Vogel</div><div class="sub" id="imsSub"></div><div id="imsLinks" style="display:grid;gap:7px"></div><div class="url" id="imsUrl"></div></div></div>
+        </div>
+        <div class="ctrl">
+          <div class="rules" id="imsRules">
+            <div class="eyebrow" style="margin-bottom:4px">Smart rules</div>
+            <div class="rule" data-r="work"><span>Mon–Fri · 9:00–18:00</span><span>→ Work</span></div>
+            <div class="rule" data-r="social"><span>Every day · after 18:00</span><span>→ Social</span></div>
+            <div class="rule" data-r="event"><span>Saturday</span><span>→ Event</span></div>
+            <div class="rule" data-r="home"><span>Any other time</span><span>→ Home</span></div>
+          </div>
+          <div class="qr-card"><canvas id="qr" width="148" height="148" aria-label="QR code for the page"></canvas><span class="u" id="qrUrl"></span></div>
+          <a class="btn btn-primary btn-sm" style="justify-self:start" href="https://inmyspheres.com" target="_blank" rel="noopener">Build my first page <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento -->
+  <section>
+    <div class="wrap">
+      <div class="chapter-head center" style="margin-inline:auto">
+        <span class="eyebrow">What every NUUX product shares</span>
+        <h2>Built the same way,<br>whatever it <span class="serif">does.</span></h2>
+      </div>
+      <div class="bento">
+        <div class="b1 rise"><span class="eyebrow">Made in Tallinn</span><div class="coord">59.437° N<span>,</span><br>24.754° E</div><p>We build in one of Europe's most digital cities, where privacy and transparent public services are part of everyday life.</p></div>
+        <div class="b2 rise"><span class="eyebrow">Explainable</span><div class="why"><b>Why this result?</b><span>Rule 4.2 matched: employment</span><span>Source: Annex III, point 4</span><span>Reviewed by: named approver</span></div><p>Every decision shows its working.</p></div>
+        <div class="b3 rise"><span class="eyebrow">Practitioner-built</span><div class="since">2018</div><p>The year our founder began examining for the IB. Our products come from the work itself.</p></div>
+        <div class="b4 rise"><span class="eyebrow">Privacy by design</span><h3>Your data serves you, and only you.</h3><div class="flow"><span>Collected with purpose</span><i>→</i><span>Stored in the EU</span><i>→</i><span>Never sold</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finale">
+    <div class="wrap">
+      <h2>See it for <span class="serif">yourself.</span></h2>
+      <p>A thirty-minute walkthrough, shaped around your organization or school.</p>
+      <div class="hero-ctas"><a class="btn btn-primary" href="#demo" data-go="demo">Book a demo <span class="arr">→</span></a><a class="btn btn-ghost" href="#pricing" data-go="pricing">View pricing</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+<div class="page" id="p-products">
+  <div class="wrap hero" style="padding-bottom:clamp(72px,9vw,120px)">
+    <span class="eyebrow">Products</span>
+    <h1 style="margin-top:24px;font-size:clamp(46px,7.6vw,104px)">Three products.<br>Each with one <span class="serif">job.</span></h1>
+    <p class="lede">Every product has its own home, its own customers and its own roadmap. They share a studio, a design language and a habit of explaining their decisions.</p>
+    <div class="pcards" style="text-align:left">
+      <a class="pcard" href="#tira" data-anchor="tira" style="--h:var(--tira)"><div style="display:grid;gap:12px"><span class="who">Compliance teams</span><span class="nm">TIRA</span><p>AI governance for the EU AI Act, DORA, NIS2 and ISO/IEC 42001.</p></div><span class="go">Explore TIRA →</span></a>
+      <a class="pcard" href="#io" data-anchor="io" style="--h:var(--io)"><div style="display:grid;gap:12px"><span class="who">IB schools and students</span><span class="nm">IO Examiner</span><p>Rubric-aligned grades and feedback for the IB English Individual Oral.</p></div><span class="go">Explore IO Examiner →</span></a>
+      <a class="pcard" href="#ims" data-anchor="ims" style="--h:var(--ims)"><div style="display:grid;gap:12px"><span class="who">Creators and professionals</span><span class="nm">In My Spheres</span><p>A link-in-bio with a page for each side of your life, shared by QR or NFC.</p></div><span class="go">Explore In My Spheres →</span></a>
+    </div>
+  </div>
+
+  <section class="pd" id="tira">
+    <div class="wrap pd-grid">
+      <div>
+        <span class="eyebrow" style="color:var(--tira)">TIRA · tira.ee</span>
+        <h2 style="margin-top:18px">AI governance for European regulation.</h2>
+        <p class="lede" style="margin-top:22px">For compliance teams that cannot rely on a black-box score. TIRA turns European AI rules into a register, a set of controls and an evidence trail you can defend.</p>
+        <dl class="spec">
+          <div><dt>For</dt><dd>Compliance, risk, legal and data protection teams</dd></div>
+          <div><dt>Frameworks</dt><dd>EU AI Act, DORA, NIS2, ISO/IEC 42001</dd></div>
+          <div><dt>Access</dt><dd>Guided demo and onboarding</dd></div>
+        </dl>
+        <div class="hero-ctas" style="justify-content:flex-start"><a class="btn btn-primary" href="#demo" data-go="demo" data-product="TIRA">Book a TIRA demo</a><a class="btn btn-ghost" href="https://tira.ee" target="_blank" rel="noopener">tira.ee</a></div>
+      </div>
+      <div class="feat">
+        <div><h4>AI system register</h4><p>One inventory of every AI system you build, buy or use, each with an owner.</p></div>
+        <div><h4>Explainable classification</h4><p>Each risk class shows the rule and article that produced it.</p></div>
+        <div><h4>Control library</h4><p>Controls mapped across frameworks, so one piece of work covers several obligations.</p></div>
+        <div><h4>Evidence workflows</h4><p>Collect, review and version evidence for each control, with gaps in plain view.</p></div>
+        <div><h4>Human approval</h4><p>Named sign-off wherever regulation expects a person to decide.</p></div>
+        <div><h4>Multi-entity</h4><p>Separate workspaces for subsidiaries, clients or departments.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd soft" id="io">
+    <div class="wrap pd-grid">
+      <div>
+        <span class="eyebrow" style="color:var(--io)">IO Examiner · individualoral.com</span>
+        <h2 style="margin-top:18px">Practice that knows the rubric.</h2>
+        <p class="lede" style="margin-top:22px">IO Examiner grades practice Individual Orals for IB DP English and explains each mark against the official criteria. Students get a clear next step. Teachers see the whole class.</p>
+        <dl class="spec">
+          <div><dt>For</dt><dd>IB DP English A students, teachers and coordinators</dd></div>
+          <div><dt>Courses</dt><dd>Language and Literature, Literature</dd></div>
+          <div><dt>Rubric</dt><dd>Criteria A to D, 40 marks in total</dd></div>
+          <div><dt>Access</dt><dd>Free to try; school plans available</dd></div>
+        </dl>
+        <div class="hero-ctas" style="justify-content:flex-start"><a class="btn btn-primary" href="https://individualoral.com" target="_blank" rel="noopener">Try it free</a><a class="btn btn-ghost" href="#demo" data-go="demo" data-product="IO Examiner">School demo</a></div>
+      </div>
+      <div class="feat">
+        <div><h4>Instant grading</h4><p>A mark for each criterion moments after submitting.</p></div>
+        <div><h4>Feedback in IB language</h4><p>Comments that use the descriptors students will be marked against.</p></div>
+        <div><h4>Progress over time</h4><p>See how each attempt improves on the last, criterion by criterion.</p></div>
+        <div><h4>Examiner-designed</h4><p>Built by an IB English examiner with years of experience.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd" id="ims">
+    <div class="wrap pd-grid">
+      <div>
+        <span class="eyebrow" style="color:var(--ims)">In My Spheres · inmyspheres.com</span>
+        <h2 style="margin-top:18px">Your internet should feel like a place.</h2>
+        <p class="lede" style="margin-top:22px">One list of links cannot be all of you. In My Spheres gives each side of your life its own page, theme and QR code, with rules that send each visitor to the right one.</p>
+        <dl class="spec">
+          <div><dt>For</dt><dd>Consultants, artists, teachers, event hosts, creators</dd></div>
+          <div><dt>Sharing</dt><dd>Link, printable QR codes, NFC tags</dd></div>
+          <div><dt>Access</dt><dd>Free plan forever; paid plans for more</dd></div>
+        </dl>
+        <div class="hero-ctas" style="justify-content:flex-start"><a class="btn btn-primary" href="https://inmyspheres.com" target="_blank" rel="noopener">Build my first page</a></div>
+      </div>
+      <div class="feat">
+        <div><h4>A page per side</h4><p>Work, music, CV, events, community. Each with its own look.</p></div>
+        <div><h4>Block editor</h4><p>Drag blocks, add a link, publish. The preview updates as you type.</p></div>
+        <div><h4>QR and NFC built in</h4><p>Codes for cards, posters and product tags, in your colours.</p></div>
+        <div><h4>Smart routing</h4><p>Different pages by time, day, device or campaign, from one code.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PRICING ================= -->
+<div class="page" id="p-pricing">
+  <div class="wrap hero" style="padding-bottom:clamp(56px,7vw,88px)">
+    <span class="eyebrow">Pricing</span>
+    <h1 style="margin-top:24px;font-size:clamp(46px,7.6vw,104px)">Priced for how<br>you <span class="serif">use it.</span></h1>
+    <p class="lede">A compliance platform and a personal page need different models. Each product has its own, with full details on its site.</p>
+  </div>
+  <div class="wrap">
+    <div class="plans">
+      <div class="plan dark rise">
+        <div class="pn"><i style="background:var(--night-tira)"></i>TIRA</div>
+        <div class="model">Annual subscription</div>
+        <p class="muted">Scoped to your AI systems, entities and frameworks.</p>
+        <ul><li>Guided onboarding</li><li>All four frameworks</li><li>Multi-entity workspaces</li><li>Priority support</li></ul>
+        <a class="btn btn-primary" href="#demo" data-go="demo" data-product="TIRA">Book a demo</a>
+      </div>
+      <div class="plan rise">
+        <div class="pn"><i style="background:var(--io)"></i>IO Examiner</div>
+        <div class="model">Free to start</div>
+        <p class="muted">Students try it free. Schools license it for whole classes.</p>
+        <ul><li>Free trial for students</li><li>Student and school plans</li><li>Teacher class view</li></ul>
+        <a class="btn btn-ghost" href="https://individualoral.com" target="_blank" rel="noopener">See plans</a>
+      </div>
+      <div class="plan rise">
+        <div class="pn"><i style="background:var(--ims)"></i>In My Spheres</div>
+        <div class="model">Free forever</div>
+        <p class="muted">Your first page is free. Upgrade for more pages and routing.</p>
+        <ul><li>No card needed</li><li>Paid plans for power users</li><li>QR and NFC included</li></ul>
+        <a class="btn btn-ghost" href="https://inmyspheres.com" target="_blank" rel="noopener">See plans</a>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="chapter-head center" style="margin-inline:auto"><h2>Questions</h2></div>
+      <div class="faq">
+        <details><summary>Do I need one account for all NUUX products?</summary><p>No. Each product has its own account and sign-in. NUUX is the studio that builds and supports them.</p></details>
+        <details><summary>Where is my data stored?</summary><p>NUUX is based in Estonia and designs its products around European data protection standards. Details for each product are published on its site.</p></details>
+        <details><summary>Can a school or organization pay by invoice?</summary><p>Yes. Institutional plans for TIRA and IO Examiner are invoiced. Book a demo and we will set it up with you.</p></details>
+        <details><summary>Do you offer education or nonprofit pricing?</summary><p>Ask us during your demo. We price fairly for schools and mission-driven organizations.</p></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div class="page" id="p-about">
+  <div class="wrap hero about-hero" style="text-align:left;padding-bottom:clamp(56px,7vw,96px)">
+    <span class="eyebrow">About NUUX</span>
+    <h1 style="margin-top:24px">Built by people<br>who did the <span class="serif">work.</span></h1>
+  </div>
+  <div class="wrap about-grid" style="padding-bottom:clamp(88px,10vw,140px)">
+    <div class="founder">
+      <div class="mono">GR</div>
+      <div><b>Glen Rai</b><p>Founder · Tallinn, Estonia</p></div>
+    </div>
+    <div class="prose">
+      <p><strong>NUUX began with a simple observation.</strong> The people closest to a problem usually know what the right tool looks like, but rarely get to build it.</p>
+      <p>Our founder has spent years as an educator, an IB English examiner and an adviser on responsible AI. Each product grew out of that work. IO Examiner came from the classroom and the examination room. TIRA came from helping organizations make sense of the EU AI Act. In My Spheres came from the everyday need to show different people different sides of a working life.</p>
+      <p>We are based in Tallinn, and it shapes how we build: transparent logic, careful data handling and interfaces that respect people's time.</p>
+    </div>
+  </div>
+  <section class="soft">
+    <div class="wrap">
+      <div class="chapter-head"><span class="eyebrow">How we got here</span><h2>A short history.</h2></div>
+      <div class="timeline">
+        <div><b>2018</b><div><h4>Into the examination room</h4><p>Our founder begins examining IB DP English, the experience behind IO Examiner.</p></div></div>
+        <div><b>2025</b><div><h4>Governance work begins</h4><p>Advising schools and organizations on EU AI Act compliance shapes what becomes TIRA.</p></div></div>
+        <div><b>2026</b><div><h4>Three products in market</h4><p>TIRA, IO Examiner and In My Spheres, each with its own home.</p></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= DEMO ================= -->
+<div class="page" id="p-demo">
+  <div class="wrap demo-grid" style="padding-block:clamp(72px,10vw,136px)">
+    <div>
+      <span class="eyebrow">Book a demo</span>
+      <h1 style="margin-top:24px;font-size:clamp(44px,6.4vw,84px)">Let's find the right <span class="serif">fit.</span></h1>
+      <p class="lede" style="margin-top:24px">Tell us a little about you. We reply within two working days to arrange a time.</p>
+      <ol class="steps">
+        <li><div><b>Tell us what you need</b><span>Pick a product and share a few details.</span></div></li>
+        <li><div><b>We prepare</b><span>Your demo is shaped around your context.</span></div></li>
+        <li><div><b>Thirty minutes, live</b><span>A walkthrough with time for your questions.</span></div></li>
+      </ol>
+    </div>
+    <div>
+      <form class="fcard" id="demoForm" name="demo" novalidate>
+        <fieldset>
+          <legend>Which product are you interested in?</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="product" value="TIRA" id="pr-tira"><span>TIRA</span></label>
+            <label class="chip"><input type="checkbox" name="product" value="IO Examiner" id="pr-io"><span>IO Examiner</span></label>
+            <label class="chip"><input type="checkbox" name="product" value="In My Spheres" id="pr-ims"><span>In My Spheres</span></label>
+            <label class="chip"><input type="checkbox" name="product" value="Not sure" id="pr-ns"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <div class="row2">
+          <label for="f-name">Full name<input id="f-name" name="fullname" autocomplete="name"></label>
+          <label for="f-email">Work email<input id="f-email" name="email" type="email" autocomplete="email"></label>
+        </div>
+        <div class="row2">
+          <label for="f-org">Organization<input id="f-org" name="org" autocomplete="organization"></label>
+          <label for="f-role">Your role
+            <select id="f-role" name="role">
+              <option value="">Select</option><option>Compliance, risk or legal</option><option>Leadership</option><option>Teacher or coordinator</option><option>Student or parent</option><option>Creator or freelancer</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <label for="f-msg">What would you like to see?<textarea id="f-msg" name="msg" placeholder="For example: we use four AI tools in HR and need to know which count as high risk."></textarea></label>
+        <p hidden><label for="f-bot">Leave this empty<input name="botcheck" id="f-bot" tabindex="-1" autocomplete="off"></label></p>
+        <p class="err" id="formErr" hidden></p>
+        <button class="btn btn-primary" type="submit" id="f-submit" style="justify-self:start">Request a demo <span class="arr">→</span></button>
+        <p class="consent">We use these details only to respond to your request and arrange your demo. See our <a href="#privacy" data-go="privacy">Privacy Policy</a> for how we handle your data and your rights.</p>
+        <p class="note">Pressing the button opens your email app with your request written out, ready to send.</p>
+      </form>
+      <div class="done" id="formDone" hidden>
+        <span class="eyebrow">One last step</span>
+        <h3>Thanks, <span id="doneName"></span>. Now press send.</h3>
+        <p class="muted">Your email app should have opened with your request ready to go. Send it and we will reply within two working days to arrange a time.</p>
+        <p class="muted">If no email opened, write to us directly:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <span id="mailAddr" style="font-family:var(--f-mono);font-size:15px;color:var(--ink);user-select:all">glenrai@gmail.com</span>
+          <button class="btn btn-ghost btn-sm" type="button" id="copyMail">Copy address</button>
+          <a class="btn btn-ghost btn-sm" id="reopenMail" href="mailto:glenrai@gmail.com">Open email again</a>
+        </div>
+        <button class="btn btn-ghost" type="button" id="again" style="justify-self:start">Edit request</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================= PRIVACY ================= -->
+<div class="page" id="p-privacy">
+  <div class="wrap legal-hero">
+    <span class="eyebrow">Legal</span>
+    <h1 style="margin-top:22px">Privacy Policy</h1>
+    <p class="lede" style="margin-top:22px">How NUUX collects, uses and protects personal data on this website, and the rights you have under the EU General Data Protection Regulation.</p>
+    <div class="legal-meta"><span>Last updated <b>10 October 2026</b></span><span>Applies to <b>this website</b></span><span>Governing law <b>GDPR and Estonian law</b></span></div>
+  </div>
+  <div class="wrap legal-grid">
+    <nav class="toc" aria-label="Privacy Policy sections">
+      <span class="eyebrow">On this page</span>
+      <a href="#pp-1" data-jump="pp-1">Who we are</a>
+      <a href="#pp-2" data-jump="pp-2">Scope</a>
+      <a href="#pp-3" data-jump="pp-3">Data we collect</a>
+      <a href="#pp-4" data-jump="pp-4">Purposes and legal bases</a>
+      <a href="#pp-5" data-jump="pp-5">Cookies and similar technologies</a>
+      <a href="#pp-6" data-jump="pp-6">Who receives your data</a>
+      <a href="#pp-7" data-jump="pp-7">Transfers outside the EEA</a>
+      <a href="#pp-8" data-jump="pp-8">How long we keep data</a>
+      <a href="#pp-9" data-jump="pp-9">Your rights</a>
+      <a href="#pp-10" data-jump="pp-10">Security</a>
+      <a href="#pp-11" data-jump="pp-11">Children</a>
+      <a href="#pp-12" data-jump="pp-12">Changes to this policy</a>
+      <a href="#pp-13" data-jump="pp-13">Contact and complaints</a>
+    </nav>
+    <article class="legal">
+      <h2 id="pp-1"><span class="num">01</span>Who we are</h2>
+      <p>This website is operated by <span class="fill">[NUUX legal entity name, e.g. NUUX OÜ]</span>, a company registered in the Estonian Commercial Register under registry code <span class="fill">[registry code]</span>, with its registered address at <span class="fill">[registered address]</span>, Tallinn, Estonia ("<strong>NUUX</strong>", "<strong>we</strong>", "<strong>us</strong>").</p>
+      <p>NUUX is the <strong>controller</strong> of the personal data described in this policy within the meaning of Article 4(7) of Regulation (EU) 2016/679 (the General Data Protection Regulation, "<strong>GDPR</strong>"). You can contact us about any privacy matter at <span class="fill">[privacy@nuux domain]</span>.</p>
+
+      <h2 id="pp-2"><span class="num">02</span>Scope</h2>
+      <p>This policy covers personal data processed through the NUUX company website, including when you browse it, request a demo or otherwise contact us.</p>
+      <div class="callout">Our products, <strong>TIRA</strong> (tira.ee), <strong>IO Examiner</strong> (individualoral.com) and <strong>In My Spheres</strong> (inmyspheres.com), each have their own privacy notice. Those notices govern data processed when you use a product, including any customer data you upload. Where NUUX processes personal data on behalf of a business customer, it acts as a <strong>processor</strong> under a data processing agreement with that customer.</div>
+
+      <h2 id="pp-3"><span class="num">03</span>Data we collect</h2>
+      <h3>Data you give us</h3>
+      <ul>
+        <li><strong>Demo requests and enquiries:</strong> your name, work email address, organization, role, the products you are interested in and anything you write in your message.</li>
+        <li><strong>Correspondence:</strong> the content of emails and calls with us, including scheduling details for a demo.</li>
+      </ul>
+      <h3>Data collected automatically</h3>
+      <ul>
+        <li><strong>Technical data:</strong> your IP address, browser type and version, device type, operating system, referring page, pages viewed and the date and time of your visit. Our hosting provider records this in server logs to deliver the site and keep it secure.</li>
+      </ul>
+      <p>We do not ask for, and ask you not to send us, special categories of personal data under Article 9 GDPR, such as health information.</p>
+
+      <h2 id="pp-4"><span class="num">04</span>Purposes and legal bases</h2>
+      <p>We process personal data only where the GDPR gives us a legal basis to do so.</p>
+      <div class="tscroll">
+        <table class="ltable">
+          <thead><tr><th>Purpose</th><th>Data</th><th>Legal basis (GDPR)</th></tr></thead>
+          <tbody>
+            <tr><td>Responding to a demo request or enquiry, and arranging and holding the demo</td><td>Contact and enquiry data, correspondence</td><td>Steps taken at your request before entering into a contract, Art. 6(1)(b); or our legitimate interest in answering business enquiries, Art. 6(1)(f)</td></tr>
+            <tr><td>Following up after a demo about the product you asked about</td><td>Contact and enquiry data</td><td>Legitimate interest in developing business relationships, Art. 6(1)(f). You can object at any time.</td></tr>
+            <tr><td>Sending marketing emails or newsletters</td><td>Name, email address</td><td>Your consent, Art. 6(1)(a), or where permitted for existing customers, our legitimate interest, Art. 6(1)(f). You can withdraw or opt out at any time.</td></tr>
+            <tr><td>Operating the website securely, preventing abuse and fixing errors</td><td>Technical data</td><td>Legitimate interest in a secure, working website, Art. 6(1)(f)</td></tr>
+            <tr><td>Keeping business and accounting records, and responding to lawful requests</td><td>Correspondence, contract data</td><td>Compliance with legal obligations, Art. 6(1)(c), including the Estonian Accounting Act</td></tr>
+            <tr><td>Establishing, exercising or defending legal claims</td><td>Any relevant data</td><td>Legitimate interest, Art. 6(1)(f)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Where we rely on legitimate interests, we have balanced those interests against your rights and freedoms. You can ask us for details of that assessment. We do not use your data for automated decision-making, including profiling, that produces legal or similarly significant effects for you.</p>
+
+      <h2 id="pp-5"><span class="num">05</span>Cookies and similar technologies</h2>
+      <p>This website does not set advertising or analytics cookies, and it does not track you across other websites. It uses only what is strictly necessary to display the site.</p>
+      <p>To display our typefaces, your browser loads fonts from Google Fonts, a service provided by Google Ireland Limited. This request shares your IP address with Google. If we add analytics or any other non-essential cookies in future, we will ask for your consent first, as required by the ePrivacy Directive and the Estonian Electronic Communications Act, and we will update this section.</p>
+
+      <h2 id="pp-6"><span class="num">06</span>Who receives your data</h2>
+      <p>We do not sell personal data. We share it only with the following categories of recipients, and only as far as needed:</p>
+      <ul>
+        <li><strong>Service providers acting as our processors,</strong> such as website hosting, email, video conferencing, scheduling and customer relationship management providers. They process data only on our instructions under contracts that meet Article 28 GDPR. A current list is available on request.</li>
+        <li><strong>Professional advisers,</strong> such as accountants, auditors and lawyers, who are bound by confidentiality.</li>
+        <li><strong>Public authorities, courts and law enforcement,</strong> where we are legally required to disclose data.</li>
+        <li><strong>A buyer or successor,</strong> if NUUX is involved in a merger, acquisition or sale of assets, subject to equivalent protection of your data.</li>
+      </ul>
+
+      <h2 id="pp-7"><span class="num">07</span>Transfers outside the EEA</h2>
+      <p>We aim to store and process personal data within the European Economic Area. Where a service provider processes data outside the EEA, we ensure an appropriate safeguard under Chapter V GDPR is in place. This may be an adequacy decision of the European Commission, including the EU-US Data Privacy Framework for certified US companies, or the Commission's Standard Contractual Clauses together with any supplementary measures needed. You can ask us for a copy of the relevant safeguard.</p>
+
+      <h2 id="pp-8"><span class="num">08</span>How long we keep data</h2>
+      <ul>
+        <li><strong>Demo requests and enquiries that do not lead to a contract:</strong> up to 24 months after our last contact, then deleted or anonymized.</li>
+        <li><strong>Customer and contract records:</strong> for the duration of the relationship and up to the end of the limitation period for claims under the Estonian Law of Obligations Act and General Part of the Civil Code Act.</li>
+        <li><strong>Accounting source documents:</strong> 7 years, as required by the Estonian Accounting Act.</li>
+        <li><strong>Server logs:</strong> no longer than 90 days, unless needed to investigate a security incident.</li>
+        <li><strong>Marketing data:</strong> until you withdraw consent or opt out.</li>
+      </ul>
+
+      <h2 id="pp-9"><span class="num">09</span>Your rights</h2>
+      <p>Under the GDPR you have the right to:</p>
+      <ul>
+        <li><strong>Access</strong> your personal data and receive a copy of it (Art. 15)</li>
+        <li><strong>Rectify</strong> inaccurate or incomplete data (Art. 16)</li>
+        <li><strong>Erase</strong> your data in certain circumstances (Art. 17)</li>
+        <li><strong>Restrict</strong> how we process your data (Art. 18)</li>
+        <li><strong>Data portability,</strong> receiving data you gave us in a structured, machine-readable format (Art. 20)</li>
+        <li><strong>Object</strong> to processing based on legitimate interests, and to direct marketing at any time (Art. 21)</li>
+        <li><strong>Withdraw consent</strong> at any time, without affecting processing that took place before withdrawal (Art. 7(3))</li>
+      </ul>
+      <p>To exercise any of these rights, email <span class="fill">[privacy@nuux domain]</span>. We will reply within one month, which may be extended by two further months for complex requests, in which case we will tell you. We may need to verify your identity before acting on a request. Exercising your rights is free of charge unless a request is manifestly unfounded or excessive.</p>
+
+      <h2 id="pp-10"><span class="num">10</span>Security</h2>
+      <p>We use appropriate technical and organizational measures to protect personal data, including encryption in transit, access controls limited to staff who need the data, and careful selection of service providers. If a personal data breach is likely to result in a high risk to your rights and freedoms, we will notify you and the supervisory authority as required by Articles 33 and 34 GDPR.</p>
+
+      <h2 id="pp-11"><span class="num">11</span>Children</h2>
+      <p>This website is intended for organizations, schools and adults. We do not knowingly collect personal data from children through it. In Estonia, a child may consent to information society services from the age of 13. If you believe a child has sent us personal data, contact us and we will delete it. The way IO Examiner handles student data is explained in its own privacy notice.</p>
+
+      <h2 id="pp-12"><span class="num">12</span>Changes to this policy</h2>
+      <p>We may update this policy to reflect changes in our practices or the law. The date at the top shows when it was last revised. If we make material changes, we will highlight them on this website.</p>
+
+      <h2 id="pp-13"><span class="num">13</span>Contact and complaints</h2>
+      <p>Questions or requests about this policy: <span class="fill">[privacy@nuux domain]</span>, or by post to <span class="fill">[NUUX legal entity name]</span>, <span class="fill">[registered address]</span>, Tallinn, Estonia.</p>
+      <p>You also have the right to lodge a complaint with a supervisory authority, in particular in the EU member state where you live, work or where an alleged infringement took place. Our lead authority is the <strong>Estonian Data Protection Inspectorate</strong> (Andmekaitse Inspektsioon), Tatari 39, 10134 Tallinn, Estonia, info@aki.ee, <a href="https://www.aki.ee" target="_blank" rel="noopener">www.aki.ee</a>. We would appreciate the chance to address your concern first.</p>
+    </article>
+  </div>
+</div>
+
+<!-- ================= TERMS ================= -->
+<div class="page" id="p-terms">
+  <div class="wrap legal-hero">
+    <span class="eyebrow">Legal</span>
+    <h1 style="margin-top:22px">Terms of Use</h1>
+    <p class="lede" style="margin-top:22px">The terms that apply when you visit and use the NUUX company website.</p>
+    <div class="legal-meta"><span>Last updated <b>10 October 2026</b></span><span>Applies to <b>this website</b></span><span>Governing law <b>Republic of Estonia</b></span></div>
+  </div>
+  <div class="wrap legal-grid">
+    <nav class="toc" aria-label="Terms of Use sections">
+      <span class="eyebrow">On this page</span>
+      <a href="#tu-1" data-jump="tu-1">About these terms</a>
+      <a href="#tu-2" data-jump="tu-2">Who we are</a>
+      <a href="#tu-3" data-jump="tu-3">Our products have their own terms</a>
+      <a href="#tu-4" data-jump="tu-4">Using this website</a>
+      <a href="#tu-5" data-jump="tu-5">Information and demonstrations</a>
+      <a href="#tu-6" data-jump="tu-6">Intellectual property</a>
+      <a href="#tu-7" data-jump="tu-7">Demo requests</a>
+      <a href="#tu-8" data-jump="tu-8">Links to other websites</a>
+      <a href="#tu-9" data-jump="tu-9">Availability</a>
+      <a href="#tu-10" data-jump="tu-10">Liability</a>
+      <a href="#tu-11" data-jump="tu-11">Privacy</a>
+      <a href="#tu-12" data-jump="tu-12">Changes</a>
+      <a href="#tu-13" data-jump="tu-13">Governing law and disputes</a>
+      <a href="#tu-14" data-jump="tu-14">General</a>
+      <a href="#tu-15" data-jump="tu-15">Contact</a>
+    </nav>
+    <article class="legal">
+      <h2 id="tu-1"><span class="num">01</span>About these terms</h2>
+      <p>These Terms of Use ("<strong>Terms</strong>") govern your access to and use of the NUUX company website (the "<strong>Website</strong>"). By using the Website, you agree to these Terms. If you do not agree, please do not use the Website.</p>
+
+      <h2 id="tu-2"><span class="num">02</span>Who we are</h2>
+      <p>The Website is operated by <span class="fill">[NUUX legal entity name, e.g. NUUX OÜ]</span>, registry code <span class="fill">[registry code]</span>, registered address <span class="fill">[registered address]</span>, Tallinn, Estonia, VAT number <span class="fill">[VAT number, if registered]</span>, email <span class="fill">[legal@nuux domain]</span> ("<strong>NUUX</strong>", "<strong>we</strong>", "<strong>us</strong>").</p>
+
+      <h2 id="tu-3"><span class="num">03</span>Our products have their own terms</h2>
+      <p>These Terms cover the Website only. Use of <strong>TIRA</strong>, <strong>IO Examiner</strong> and <strong>In My Spheres</strong> is governed by the terms of service, subscription agreements and privacy notices of each product, or by a separate written agreement between you or your organization and NUUX. If those terms conflict with these Terms, the product terms or written agreement prevail for that product.</p>
+
+      <h2 id="tu-4"><span class="num">04</span>Using this website</h2>
+      <p>You may use the Website for lawful purposes, to learn about NUUX and its products and to contact us. You agree not to:</p>
+      <ul>
+        <li>use the Website in any way that breaks applicable law or infringes anyone's rights;</li>
+        <li>attempt to gain unauthorized access to the Website, its servers or any connected system, or interfere with its operation or security;</li>
+        <li>introduce malware or any harmful code, or carry out denial-of-service attacks;</li>
+        <li>use automated tools to scrape, harvest or extract content or data from the Website in bulk, except as permitted by applicable law;</li>
+        <li>submit false information or impersonate any person or organization; or</li>
+        <li>use the Website or its content to build a competing product or service.</li>
+      </ul>
+
+      <h2 id="tu-5"><span class="num">05</span>Information and demonstrations</h2>
+      <p>The content on the Website is provided for general information about NUUX and its products. Product descriptions, features and pricing models may change and do not constitute a binding offer. A contract is formed only when you accept the relevant product terms or sign an agreement with us.</p>
+      <div class="callout"><strong>Interactive examples are illustrations only.</strong> The AI risk classification example, the sample oral scores and the page routing demonstration on this Website use simplified, fictional data to show how our products work. They are not legal, regulatory, compliance or educational advice, and must not be relied on to determine your obligations under the EU AI Act or any other law, or to predict an assessment outcome. Always seek qualified advice for your specific situation.</div>
+      <p>IB, International Baccalaureate and related marks are trademarks of the International Baccalaureate Organization. IO Examiner is an independent product and is not endorsed by or affiliated with the International Baccalaureate Organization.</p>
+
+      <h2 id="tu-6"><span class="num">06</span>Intellectual property</h2>
+      <p>The Website and its content, including text, graphics, interface designs, logos, the NUUX, TIRA, IO Examiner and In My Spheres names and marks, and the underlying code, are owned by or licensed to NUUX and protected by copyright, trademark and other intellectual property laws.</p>
+      <p>You may view and print pages for your own personal or internal business use. You may not copy, reproduce, modify, distribute, publicly display or create derivative works from any part of the Website without our prior written permission, except as permitted by mandatory law. Nothing in these Terms transfers any intellectual property rights to you.</p>
+
+      <h2 id="tu-7"><span class="num">07</span>Demo requests</h2>
+      <p>When you request a demo or contact us, you confirm that the information you give is accurate and that you are authorized to share it, including on behalf of your organization. Submitting a request does not oblige either party to enter into a contract. We handle the personal data you provide as described in our <a href="#privacy" data-go="privacy">Privacy Policy</a>.</p>
+
+      <h2 id="tu-8"><span class="num">08</span>Links to other websites</h2>
+      <p>The Website contains links to other websites, including the websites of our products and third parties. Third-party websites are outside our control, and we are not responsible for their content, availability or privacy practices. A link does not imply endorsement.</p>
+
+      <h2 id="tu-9"><span class="num">09</span>Availability</h2>
+      <p>We aim to keep the Website available and accurate, but we provide it on an "as is" and "as available" basis. We may change, suspend or withdraw any part of it at any time, for example for maintenance, without notice. We do not guarantee that the Website will be uninterrupted, error-free or free of harmful components.</p>
+
+      <h2 id="tu-10"><span class="num">10</span>Liability</h2>
+      <p>To the fullest extent permitted by law, NUUX is not liable for any loss or damage arising from your use of, or inability to use, the Website or reliance on its content, including indirect or consequential loss, loss of profit, revenue, data or goodwill.</p>
+      <p>Nothing in these Terms limits or excludes liability that cannot be limited or excluded under applicable law, including liability for damage caused intentionally or through gross negligence, and liability for death or personal injury, as provided in § 106 of the Estonian Law of Obligations Act. If you are a consumer, nothing in these Terms affects your mandatory statutory rights.</p>
+
+      <h2 id="tu-11"><span class="num">11</span>Privacy</h2>
+      <p>Our <a href="#privacy" data-go="privacy">Privacy Policy</a> explains how we process personal data through the Website and forms part of these Terms.</p>
+
+      <h2 id="tu-12"><span class="num">12</span>Changes</h2>
+      <p>We may revise these Terms from time to time. The date at the top shows when they were last updated. The version published on the Website when you use it applies to that use.</p>
+
+      <h2 id="tu-13"><span class="num">13</span>Governing law and disputes</h2>
+      <p>These Terms and any dispute arising from or relating to them are governed by the laws of the Republic of Estonia, excluding its conflict-of-law rules.</p>
+      <p>Disputes will be resolved by Harju County Court (Harju Maakohus) in Tallinn, Estonia. If you are a consumer, this choice of law and court does not deprive you of the protection of mandatory provisions of the law of the country where you live, and you may also bring proceedings in the courts of that country. Consumers in Estonia may refer a dispute to the Consumer Disputes Committee (Tarbijavaidluste komisjon) of the Consumer Protection and Technical Regulatory Authority.</p>
+
+      <h2 id="tu-14"><span class="num">14</span>General</h2>
+      <ul>
+        <li><strong>Severability:</strong> if any provision of these Terms is found invalid or unenforceable, the remaining provisions remain in full effect.</li>
+        <li><strong>No waiver:</strong> our failure to enforce any provision is not a waiver of our right to do so later.</li>
+        <li><strong>Assignment:</strong> we may transfer our rights and obligations under these Terms to a successor. You may not transfer yours without our consent.</li>
+        <li><strong>Language:</strong> these Terms are written in English. If they are translated, the English version prevails to the extent permitted by law.</li>
+      </ul>
+
+      <h2 id="tu-15"><span class="num">15</span>Contact</h2>
+      <p>Questions about these Terms: <span class="fill">[legal@nuux domain]</span>, or by post to <span class="fill">[NUUX legal entity name]</span>, <span class="fill">[registered address]</span>, Tallinn, Estonia.</p>
+    </article>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#home" data-go="home"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x=".5" y=".5" width="23" height="23" rx="7" fill="#0b0c10" stroke="#2a2d35" stroke-width=".6"/><path d="M5.6 16.2V11a3.2 3.2 0 0 1 6.4 0v2" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round"/><path d="M12 13a3.2 3.2 0 0 0 6.4 0V7.8" fill="none" stroke="#2fa69b" stroke-width="2.3" stroke-linecap="round"/></svg><span class="wm">nu<span class="u2">u</span>x</span></a>
+        <p style="margin-top:14px;max-width:30ch">Software made with unusual care, in Tallinn, Estonia.</p>
+      </div>
+      <div><h5>Products</h5><ul><li><a href="https://tira.ee" target="_blank" rel="noopener">TIRA</a></li><li><a href="https://individualoral.com" target="_blank" rel="noopener">IO Examiner</a></li><li><a href="https://inmyspheres.com" target="_blank" rel="noopener">In My Spheres</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#about" data-go="about">About</a></li><li><a href="#pricing" data-go="pricing">Pricing</a></li><li><a href="#demo" data-go="demo">Book a demo</a></li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="#privacy" data-go="privacy">Privacy Policy</a></li><li><a href="#terms" data-go="terms">Terms of Use</a></li></ul></div>
+    </div>
+    <div class="foot-b"><span>© 2026 NUUX. All rights reserved.</span><span>Tallinn, Estonia</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- router ---------- */
+  const pages=["home","products","pricing","about","demo","privacy","terms"];
+  const anchors={tira:"products",io:"products",ims:"products"};
+  const links=document.getElementById("links"), menuBtn=document.getElementById("menuBtn");
+  function show(id,anchor){
+    if(!pages.includes(id)) id="home";
+    pages.forEach(p=>document.getElementById("p-"+p).classList.toggle("on",p===id));
+    document.querySelectorAll(".links a").forEach(a=>{a.dataset.go===id?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+    links.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");
+    requestAnimationFrame(()=>{
+      const t=anchor&&document.getElementById(anchor);
+      scrollTo({top:t?t.getBoundingClientRect().top+scrollY-58:0,behavior:"instant"});
+      onScroll();
+    });
+  }
+  function fromHash(){const h=(location.hash||"").slice(1); anchors[h]?show(anchors[h],h):show(h||"home")}
+  document.addEventListener("click",e=>{
+    const j=e.target.closest("a[data-jump]");
+    if(j){e.preventDefault();const t=document.getElementById(j.dataset.jump);if(t)scrollTo({top:t.getBoundingClientRect().top+scrollY-78,behavior:reduce?"auto":"smooth"});return}
+    const s=e.target.closest("a[data-scroll]");
+    if(s){e.preventDefault();const t=document.getElementById(s.dataset.scroll);if(t)scrollTo({top:t.getBoundingClientRect().top+scrollY-58,behavior:reduce?"auto":"smooth"});return}
+    const a=e.target.closest("a[data-go],a[data-anchor]");
+    if(!a) return;
+    e.preventDefault();
+    const go=a.dataset.go||anchors[a.dataset.anchor]||"home";
+    if(a.dataset.product) document.querySelectorAll('input[name="product"]').forEach(i=>i.checked=i.value===a.dataset.product);
+    try{history.replaceState(null,"","#"+(a.dataset.anchor||go))}catch(_){}
+    show(go,a.dataset.anchor);
+  });
+  window.addEventListener("hashchange",fromHash);
+  menuBtn.addEventListener("click",()=>{const o=links.classList.toggle("open");menuBtn.setAttribute("aria-expanded",String(o))});
+
+  /* ---------- hero stage ---------- */
+  const tabs=[...document.querySelectorAll(".seg button")], panes=[...document.querySelectorAll(".pane")], glow=document.getElementById("glow");
+  const glows=["radial-gradient(40% 50% at 30% 60%,color-mix(in srgb,var(--tira) 55%,transparent),transparent),radial-gradient(35% 45% at 75% 40%,color-mix(in srgb,var(--tira) 30%,transparent),transparent)",
+               "radial-gradient(40% 50% at 30% 60%,color-mix(in srgb,var(--io) 50%,transparent),transparent),radial-gradient(35% 45% at 75% 40%,color-mix(in srgb,var(--io) 28%,transparent),transparent)",
+               "radial-gradient(40% 50% at 30% 60%,color-mix(in srgb,var(--ims) 50%,transparent),transparent),radial-gradient(35% 45% at 75% 40%,color-mix(in srgb,var(--ims) 28%,transparent),transparent)"];
+  let cur=0, t0=performance.now(), paused=false; const DUR=7000;
+  function setTab(i){cur=i;t0=performance.now();tabs.forEach((b,j)=>{b.setAttribute("aria-selected",String(j===i));b.querySelector(".prog i").style.width="0"});panes.forEach((p,j)=>p.classList.toggle("on",j===i));glow.style.background=glows[i]}
+  tabs.forEach(b=>b.addEventListener("click",()=>{setTab(+b.dataset.i);paused=true}));
+  const stage=document.querySelector(".stage");
+  stage.addEventListener("mouseenter",()=>paused=true);
+  stage.addEventListener("mouseleave",()=>{paused=false;t0=performance.now()});
+  setTab(0);
+  if(!reduce){(function tick(now){
+    if(!paused){const p=Math.min((now-t0)/DUR,1);tabs[cur].querySelector(".prog i").style.width=(p*100)+"%";if(p>=1)setTab((cur+1)%3)}
+    requestAnimationFrame(tick)})(performance.now())}
+
+  /* ---------- statement word reveal ---------- */
+  const stmt=document.getElementById("stmt");
+  (function split(){
+    const out=[];
+    stmt.childNodes.forEach(n=>{
+      const hl=n.nodeType===1;
+      (n.textContent).split(/(\s+)/).forEach(w=>{ if(!w) return; if(/^\s+$/.test(w)) out.push(w); else out.push('<span class="w'+(hl?' hl':'')+'">'+w+'</span>') });
+    });
+    stmt.innerHTML=out.join("");
+  })();
+  const words=[...stmt.querySelectorAll(".w")];
+  function onScroll(){
+    if(!document.getElementById("p-home").classList.contains("on")) return;
+    const r=stmt.getBoundingClientRect(), vh=innerHeight;
+    let p=(vh*0.85-r.top)/(vh*0.55+r.height*0.4); p=Math.max(0,Math.min(1,p));
+    if(reduce) p=1;
+    const n=Math.round(p*words.length);
+    words.forEach((w,i)=>w.classList.toggle("lit",i<n));
+  }
+  addEventListener("scroll",onScroll,{passive:true}); addEventListener("resize",onScroll);
+
+  /* ---------- TIRA classifier (illustrative) ---------- */
+  const cases=[
+    {u:"Screening job applicants",cls:"High risk",pill:"p-high",basis:"EU AI Act · Annex III, point 4 (employment)",
+     trace:["Domain identified: recruitment and selection","Matches an Annex III high-risk area","No exemption applies: the system influences who is shortlisted"],
+     ob:["Risk management system","Data governance","Technical documentation","Logging","Human oversight","Conformity assessment"]},
+    {u:"Grading student exams",cls:"High risk",pill:"p-high",basis:"EU AI Act · Annex III, point 3 (education)",
+     trace:["Domain identified: education and vocational training","Evaluating learning outcomes is listed in Annex III","Outcome affects access to further education"],
+     ob:["Risk management system","Human oversight","Accuracy and robustness","Transparency to deployers"]},
+    {u:"Customer service chatbot",cls:"Limited risk",pill:"p-lim",basis:"EU AI Act · Article 50 (transparency)",
+     trace:["System interacts directly with people","Not in a prohibited or Annex III area","Transparency duty applies"],
+     ob:["Tell people they are talking to an AI system"]},
+    {u:"Scoring credit applicants",cls:"High risk",pill:"p-high",basis:"EU AI Act · Annex III, point 5(b) (creditworthiness)",
+     trace:["Domain identified: access to essential private services","Creditworthiness assessment is listed in Annex III","Fraud detection exception does not apply"],
+     ob:["Risk management system","Data governance","Human oversight","Fundamental rights impact assessment","Logging"]},
+    {u:"Social scoring of citizens",cls:"Prohibited",pill:"p-ban",basis:"EU AI Act · Article 5 (prohibited practices)",
+     trace:["Evaluates people based on social behaviour","Leads to unjustified detrimental treatment","Falls under a prohibited practice"],
+     ob:["Do not place on the market or use"]},
+    {u:"Filtering spam email",cls:"Minimal risk",pill:"p-min",basis:"EU AI Act · no specific obligations",
+     trace:["No direct effect on people's rights or access","Not in a prohibited or Annex III area","No transparency trigger"],
+     ob:["Voluntary codes of conduct","AI literacy for staff (Article 4)"]}
+  ];
+  const usesEl=document.getElementById("uses"), verdict=document.getElementById("verdict");
+  cases.forEach((c,i)=>{const b=document.createElement("button");b.className="use";b.type="button";b.setAttribute("aria-pressed",i===0?"true":"false");b.innerHTML='<span>'+c.u+'</span><span class="ar">→</span>';b.addEventListener("click",()=>pick(i));usesEl.appendChild(b)});
+  function pick(i){
+    const c=cases[i];
+    usesEl.querySelectorAll(".use").forEach((b,j)=>b.setAttribute("aria-pressed",String(j===i)));
+    verdict.classList.remove("swap");void verdict.offsetWidth;verdict.classList.add("swap");
+    verdict.innerHTML='<div class="top"><span>Classification</span><span>Illustrative example</span></div>'+
+      '<div><span class="pill '+c.pill+'" style="margin-bottom:12px">'+c.cls+'</span><h3>'+c.u+'</h3><div class="basis" style="margin-top:10px">'+c.basis+'</div></div>'+
+      '<div class="trace">'+c.trace.map((t,k)=>'<div><b>'+(k+1)+'</b><span>'+t+'</span></div>').join("")+'</div>'+
+      '<div><div class="eyebrow" style="margin-bottom:10px">What it requires</div><div class="oblig">'+c.ob.map(o=>'<span>'+o+'</span>').join("")+'</div></div>'+
+      '<p class="fine">A simplified illustration. In TIRA, classification uses your full system context and is confirmed by a named reviewer.</p>';
+  }
+  pick(0);
+
+  /* ---------- IO attempts ---------- */
+  const labels=["Knowledge, understanding and interpretation","Analysis and evaluation","Focus and organization","Language"];
+  const att=[
+    {s:[5,4,6,6],fb:"<em>Next step for A.</em> Your global issue is too broad. Narrow it to one idea both texts explore, such as how the state controls what people can say."},
+    {s:[6,6,7,7],fb:"<em>Next step for B.</em> You describe the panels well. Now evaluate: why did Satrapi choose black and white, and what does it do to the reader?"},
+    {s:[8,7,8,8],fb:"<em>Next step for B.</em> You name the stencil technique, then move on. Explain what it does to the viewer and connect it to your global issue."}
+  ];
+  const ioCrit=document.getElementById("ioCrit"), ioTotal=document.getElementById("ioTotal"), ioFb=document.getElementById("ioFb");
+  ioCrit.innerHTML=labels.map((l,i)=>'<div class="crow"><b>'+"ABCD"[i]+'</b><div><div class="l">'+l+'</div><div class="bar"><i></i></div></div><span class="n"></span></div>').join("");
+  function setAtt(k){
+    document.querySelectorAll("#attempts button").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.a===k)));
+    const a=att[k]; const rows=ioCrit.querySelectorAll(".crow");
+    a.s.forEach((v,i)=>{rows[i].querySelector(".bar i").style.width=(v*10)+"%";rows[i].querySelector(".n").textContent=v+"/10"});
+    const target=a.s.reduce((x,y)=>x+y,0), from=+ioTotal.textContent||0;
+    if(reduce){ioTotal.textContent=target}else{const st=performance.now();(function f(n){const p=Math.min((n-st)/500,1);ioTotal.textContent=Math.round(from+(target-from)*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(st)}
+    ioFb.innerHTML=a.fb;
+    document.querySelectorAll("#dots circle").forEach((c,i)=>{c.setAttribute("r",i===k?6:5);c.setAttribute("fill",i===k?"var(--io)":"var(--bg)")});
+  }
+  document.querySelectorAll("#attempts button").forEach(b=>b.addEventListener("click",()=>setAtt(+b.dataset.a)));
+  setAtt(2);
+
+  /* ---------- In My Spheres demo ---------- */
+  const dayNames=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]; let day=1;
+  const daysEl=document.getElementById("imsDays");
+  dayNames.forEach((d,i)=>{const b=document.createElement("button");b.type="button";b.textContent=d;b.setAttribute("aria-pressed",String(i===day));b.addEventListener("click",()=>{day=i;daysEl.querySelectorAll("button").forEach((x,j)=>x.setAttribute("aria-pressed",String(j===i)));updIms()});daysEl.appendChild(b)});
+  const spheres={
+    work:{suf:"work",sub:"Brand consultant · Berlin",links:["Book a discovery call","Case studies","Newsletter"],bg:"var(--bg-soft)"},
+    social:{suf:"social",sub:"Off the clock",links:["Playlists","Instagram","Photo diary"],bg:"color-mix(in srgb,var(--ims) 10%,var(--bg-soft))"},
+    event:{suf:"market",sub:"Saturday ceramics market",links:["This week's pieces","Map and directions","Reserve a piece"],bg:"color-mix(in srgb,var(--warn) 10%,var(--bg-soft))"},
+    home:{suf:"home",sub:"All my spheres",links:["Work","Studio","Say hello"],bg:"var(--bg-soft)"}
+  };
+  const $=id=>document.getElementById(id);
+  function slug(s){return (s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"").slice(0,18))||"you"}
+  function route(h,d){ if(d===5) return "event"; if(h>=18) return "social"; if(d<5&&h>=9) return "work"; return "home"}
+  function drawQR(text){
+    const cv=$("qr"),ctx=cv.getContext("2d");
+    if(typeof qrcode!=="function"){cv.hidden=true;return}
+    const q=qrcode(0,"M");q.addData(text);q.make();
+    const n=q.getModuleCount(), s=Math.floor(148/(n)), off=Math.floor((148-s*n)/2);
+    ctx.fillStyle="#fff";ctx.fillRect(0,0,148,148);ctx.fillStyle="#0b0c10";
+    for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))ctx.fillRect(off+c*s,off+r*s,s,s);
+  }
+  function updIms(){
+    const name=$("imsName").value.trim()||"Your name", h=+$("imsHour").value, r=route(h,day), sp=spheres[r], sl=slug(name);
+    $("imsTime").textContent=String(h).padStart(2,"0")+":00";
+    $("imsNm").textContent=r==="work"||r==="home"?name:name.split(" ")[0]+(r==="social"?", off duty":"'s market stall");
+    $("imsSub").textContent=sp.sub;
+    $("imsLinks").innerHTML=sp.links.map(l=>'<div class="lk">'+l.replace(/</g,"&lt;")+'</div>').join("");
+    $("imsScr").style.background=sp.bg;
+    $("imsUrl").textContent="inmyspheres.com/"+sl+"."+sp.suf;
+    document.querySelectorAll("#imsRules .rule").forEach(x=>x.classList.toggle("on",x.dataset.r===r));
+    const u="https://inmyspheres.com/"+sl;
+    $("qrUrl").textContent="Scan opens: inmyspheres.com/"+sl;
+    drawQR(u);
+  }
+  $("imsName").addEventListener("input",updIms);$("imsHour").addEventListener("input",updIms);
+  updIms();
+
+  /* ---------- demo form ---------- */
+  /* Demo requests open the visitor's email app with a pre-written message to this address. */
+  const DEMO_EMAIL="glenrai@gmail.com";
+
+  const form=$("demoForm"),err=$("formErr"),done=$("formDone");
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    if($("f-bot").value) return;
+    const name=$("f-name").value.trim(),email=$("f-email").value.trim();
+    const prods=[...form.querySelectorAll('input[name="product"]:checked')].map(i=>i.value);
+    let m="";
+    if(!prods.length) m="Choose at least one product, or pick Not sure yet.";
+    else if(!name) m="Add your name so we know who to reply to.";
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) m="Enter a valid email address, like name@company.com.";
+    if(m){err.textContent=m;err.hidden=false;return}
+    err.hidden=true;
+    const org=$("f-org").value.trim(),role=$("f-role").value,msg=$("f-msg").value.trim();
+    const subject="Demo request: "+prods.join(", ")+(org?" ("+org+")":"");
+    const body=["Hello NUUX team,","","I would like to book a demo.","",
+      "Product: "+prods.join(", "),"Name: "+name,"Email: "+email,
+      "Organization: "+(org||"-"),"Role: "+(role||"-"),"",
+      "What I would like to see:",msg||"-","","Thank you,",name].join("\r\n");
+    const href="mailto:"+DEMO_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+    $("reopenMail").href=href;
+    $("doneName").textContent=name.split(" ")[0];
+    form.hidden=true;done.hidden=false;
+    location.href=href;
+  });
+  $("copyMail").addEventListener("click",async()=>{
+    const b=$("copyMail");
+    try{await navigator.clipboard.writeText(DEMO_EMAIL);b.textContent="Copied"}
+    catch(_){const r=document.createRange();r.selectNodeContents($("mailAddr"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected, press copy"}
+    setTimeout(()=>b.textContent="Copy address",2500);
+  });
+  $("again").addEventListener("click",()=>{done.hidden=true;form.hidden=false});
+
+  fromHash();
+})();
+</script>
+</body>
+</html>
