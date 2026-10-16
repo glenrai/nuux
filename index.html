@@ -862,9 +862,9 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;font-size:14px;c
         <p class="muted">Your email app should have opened with your request ready to go. Send it and we will reply within two working days to arrange a time.</p>
         <p class="muted">If no email opened, write to us directly:</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-          <span id="mailAddr" style="font-family:var(--f-mono);font-size:15px;color:var(--ink);user-select:all">glenrai@gmail.com</span>
+          <span id="mailAddr" style="font-family:var(--f-mono);font-size:15px;color:var(--ink);user-select:all">hello@nuux.si</span>
           <button class="btn btn-ghost btn-sm" type="button" id="copyMail">Copy address</button>
-          <a class="btn btn-ghost btn-sm" id="reopenMail" href="mailto:glenrai@gmail.com">Open email again</a>
+          <a class="btn btn-ghost btn-sm" id="reopenMail" href="mailto:hello@nuux.si">Open email again</a>
         </div>
         <button class="btn btn-ghost" type="button" id="again" style="justify-self:start">Edit request</button>
       </div>
@@ -1266,7 +1266,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;font-size:14px;c
 
   /* ---------- demo form ---------- */
   /* Demo requests open the visitor's email app with a pre-written message to this address. */
-  const DEMO_EMAIL="glenrai@gmail.com";
+  const DEMO_EMAIL="hello@nuux.si";
 
   const form=$("demoForm"),err=$("formErr"),done=$("formDone");
   form.addEventListener("submit",e=>{
